@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <Windows.h>
+
+DWORD WINAPI function1(LPVOID lpThreadParameter)
+{
+	while (1)
+	{
+		printf("\033[0;32mSay hello\033[0m is running....\r\n");
+		Sleep(1000);
+	}
+}
+DWORD WINAPI function2(LPVOID lpThreadParameter)
+{
+	while (1)
+	{
+		printf("\033[0;31mXin chao\033[0m is running....\r\n");
+		Sleep(1000);
+	}
+}
+void main()
+{
+	HANDLE thread1 = CreateThread(0, 32, function1, 0, 0, 0);
+	HANDLE thread2 = CreateThread(0, 32, function2, 0, 0, 0);
+	int cnt = 0;
+	while (1)
+	{
+	}
+}

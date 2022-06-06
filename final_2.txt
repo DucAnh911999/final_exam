@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <math.h>
+
+class Giaiphuongtrinh {
+
+public:
+    double a, b, c;
+    double x1, x2;
+    Giaiphuongtrinh();
+    void _Giaiphuongtrinh(double, double, double);
+
+};
+
+Giaiphuongtrinh::Giaiphuongtrinh()
+{
+    x1 = 0;
+    x2 = 0;
+    a = 0;
+    b = 0;
+    c = 0;
+}
+void Giaiphuongtrinh::_Giaiphuongtrinh(double _a, double _b, double _c)
+{
+    a = _a;
+    b = _b;
+    c = _c;
+    double delta = 0;
+    delta = b * b - 4 * a * c;
+    if (a == 0)
+    {
+        printf("He so a bang 0, khong phai phuong trinh bac 2!");
+    }
+    if (delta < 0)
+    {
+        printf("Phuong trinh ax^2 + bx + c = 0 vo nghiem! ");
+    }
+    else if(delta ==0)
+    {
+        x1 = -b / (2 * a);
+        x2 = -b / (2 * a);
+        printf("Phuong trinh ax^2 + bx + c = 0 co nghiem kep la:\r\n x1 = x2 = %0.2f\r\n ", x1);
+    }
+    else
+    {
+        x1 = (-b + sqrt(delta)) / (2 * a);
+        x2 = (-b + sqrt(delta)) / (2 * a);
+        printf("Phuong trinh ax^2 + bx + c = 0 co hai nghiem la:\r\n x1 = %0.2f\r\nx2 = %0.2f ", x1, x2);
+    }
+}
+
+int main()
+{
+    Giaiphuongtrinh k;
+    k._Giaiphuongtrinh(2, -7, 5);
+    return 0;
+}

@@ -1,0 +1,15 @@
+#include<stdio.h>
+
+
+void hamin8(unsigned short x)
+{
+	printf("Gia tri 8 bit thap: 0x%x\r\n", (char)x);
+	printf("Gia tri 8 bit cao la: 0x%x\r\n", (char)(x>>8));
+
+}
+int main()
+{
+	hamin8(0x1234);
+	
+	return 0;
+}
