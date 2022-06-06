@@ -1,0 +1,40 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+
+typedef struct {
+	char light;
+	char fan;
+	char motor;
+}smartHome_t;
+
+char data[] = "HTTP1.1 200 OK\r\n{\r\n\t\"light\" : \"on\",\r\n\t\"fan\" : \"off\",\r\n\t\"motor\" : \"off\"\r\n}";
+
+void getData(smartHome_t* HomeData)
+{
+	char* state;
+	char state_[3] = { 0 };
+	state = strstr(data, "\"light\"") + 11;
+	strncpy(state_, state, 2);
+	if (state_[1] == 'f') HomeData->light = 0;
+	else HomeData->light = 1;
+	printf("\r\nTrang thai cua den la: %d\r\n", HomeData->light);
+
+	state = strstr(data, "\"fan\"") + 9;
+	strncpy(state_, state, 2);
+	if (state_[1] == 'f') HomeData->fan = 0;
+	else HomeData->fan = 1;
+	printf("Trang thai cua quat la: %d\r\n", HomeData->fan);
+
+	state = strstr(data, "\"motor\"") + 11;
+	strncpy(state_, state, 2);
+	if (state_[1] == 'f') HomeData->motor = 0;
+	else HomeData->motor = 1;
+	printf("Trang thai cua motor la: %d\r\n", HomeData->motor);
+}
+void main ()
+{
+	printf(data);
+	smartHome_t Home;
+	getData(&Home);
+}
